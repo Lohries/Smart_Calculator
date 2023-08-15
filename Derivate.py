@@ -1,12 +1,18 @@
 import sympy as sp
 
-# Definindo a variável e a função
-x = sp.Symbol('x')
-funcao = x**2 + 2*x + 1
+while True:
+    resposta = input("Quer calcular a derivada? (Sim/Nao): ")
+    if resposta == "Sim":
+        expression = input("Entre a funcao: ")
+        variable = input("Entre a variavel: ")
+        
+        x = sp.Symbol(variable)
+        f = sp.sympify(expression)
+        derivative = sp.diff(f, x)
 
-# Calculando a derivada
-derivada = sp.diff(funcao, x)
-
-# Exibindo o resultado
-print("Função original:", funcao)
-print("Derivada:", derivada)
+        print("A derivada de", expression, "em relacao", variable, "é:")
+        print(derivative)
+        
+    elif resposta == "Nao":
+        print("Até Mais")
+        break
