@@ -1,20 +1,27 @@
 import sympy as sp
 import math
+import matplotlib.pyplot as plt
+import numpy as np
+import sympy as sym
+from scipy.integrate import quad
 
-Resposta = input("Qual calculo deseja que possa ser executado: 1-Soma    2-Menos    3-Divisao   4-Multiplicacao    5-Areas de Figuras plana   6-Formulas Fisica   7-Angulos    8-Areas de Solidos Geometricos    9-Volume    10-Derivadas     11-Integrais")
+
+
+
+Resposta = input("Qual calculo deseja que possa ser executado: 1-Soma    2-Menos    3-Divisao   4-Multiplicacao    5-Areas de Figuras plana   6-Formulas Fisica   7-Angulos    8-Areas de Solidos Geometricos    9-Volume    10-Derivadas     11-Integrais 12-Calculadora grafica")
 Resposta = int(Resposta)
 
 
 if Resposta == 1:
-    vezes = input  ("Quantos numeros: ")
+    vezes = int(input("Quantos numeros: "))
     numero = 0
     numero = int(numero)
-    while vezes <= 0:
+    while vezes >= 0:
 
         numero2 = input("Numero: ")
         numero2 = int(numero)
         numero = numero2 + numero
-        vezes = vezes - 1
+        vezes = vezes - 2
     
     print("A resposta é de")
     print(numero)
@@ -22,7 +29,7 @@ if Resposta == 1:
 
 
 elif Resposta == 2:
-    vezes = input  ("Quantos numeros: ")
+    vezes = int(input("Quantos numeros: "))
     numero = 0
     numero = int(numero)
     while vezes <= 0:
@@ -30,7 +37,7 @@ elif Resposta == 2:
         numero2 = input("Numero: ")
         numero2 = int(numero)
         numero = numero2 - numero
-        vezes = vezes - 1
+        vezes = vezes - 2
     
     print("A resposta é de")
     print(numero)
@@ -38,7 +45,7 @@ elif Resposta == 2:
 
 
 elif Resposta == 3:
-    vezes = input  ("Quantos numeros: ")
+    vezes = int(input("Quantos numeros: "))
     numero = 0
     numero = int(numero)
     while vezes <= 0:
@@ -46,7 +53,7 @@ elif Resposta == 3:
         numero2 = input("Numero: ")
         numero2 = int(numero)
         numero = numero2 / numero
-        vezes = vezes - 1
+        vezes = vezes - 2
     
     print("A resposta é de")
     print(numero)
@@ -55,7 +62,7 @@ elif Resposta == 3:
 
 
 elif Resposta == 4:
-    vezes = input  ("Quantos numeros: ")
+    vezes = int(input("Quantos numeros: "))
     numero = 0
     numero = int(numero)
     while vezes <= 0:
@@ -63,7 +70,7 @@ elif Resposta == 4:
         numero2 = input("Numero: ")
         numero2 = int(numero)
         numero = numero2 * numero
-        vezes = vezes - 1
+        vezes = vezes - 2
     
     print("A resposta é de")
     print(numero)
@@ -127,9 +134,6 @@ elif Resposta == 5:
         semi = lado1 + lado2 + lado3
         area = semi * (semi - lado1) * (semi - lado2) * (semi - lado3)
         area = math.sqrt(area)
-
-
-    
     print(area)
 
         
@@ -321,16 +325,215 @@ elif Resposta == 7:
     
     if Resposta_4 > 0:
         soma = int((Resposta_4 - 2) * 180)
-        intern = int(((Resposta_4 - 2) * 180)/Resposta_4)
+        interno = int(((Resposta_4 - 2) * 180)/Resposta_4)
 
 
 
 
 elif Resposta == 8:
+    Resposta_5 = int(input("Quantas faces tem a base do solido"))
+    if Resposta_5 == 3:
+        lado1 = int(input("Qual a medida dos tres lados: "))
+        lado2 = int(input())
+        lado3 = int(input())
+        semi = lado1 + lado2 + lado3
+        area = semi * (semi - lado1) * (semi - lado2) * (semi - lado3)
+        area = math.sqrt(area)
+        area = area * 4
+
+
+    if Resposta_5 == 4:
+        lado1 = int(input("Digite o lado"))
+        lado2 = int(input())
+        area = lado1 * lado2 * 6
 
 
 
 
+    if Resposta_5 == 5:
+        print("Em caso de ser regular")
+        lado1 = int(input("Digite o lado"))
+        area = (pow(lado1, 2) * math.sqrt(3))/4
+        area = area * 5
+
+
+
+
+
+
+    if Resposta_5 == 6:
+        print("Em caso de ser regular")
+        lado1 = int(input("Digite o lado"))
+        area = (pow(lado1, 2) * math.sqrt(3))/4
+        area = area * 6
+
+
+
+
+
+    if Resposta_5 == 7:
+        print("Em caso de ser regular")
+        lado1 = int(input("Digite o lado"))
+        area = (pow(lado1, 2) * math.sqrt(3))/4
+        area = area * 7
+    
+        
 elif Resposta == 9:
+    Resposta6 = int(input("Digite o numero correspondente: 1-Cubo 2-Piramide 3-Cilindro 4-Esfera 5-Outros tipos"))
+    if Resposta6 == 1:
+        lado = int(input("Digite o lado do cubo: "))
+        volume = pow(lado, 3)
+
+
+    elif Resposta6 == 2:
+        lado1 = int(input("Qual a medida dos tres lados: "))
+        lado2 = int(input())
+        lado3 = int(input())
+        semi = lado1 + lado2 + lado3
+        area = semi * (semi - lado1) * (semi - lado2) * (semi - lado3)
+        area = math.sqrt(area)
+        altura = int(input("Qual a altura:"))
+        volume = (area * altura)/3
+
+
+    elif Resposta6 == 3:
+        raio = int(input("Qual o  raio: "))
+        altura = int(input("Qual a altura:"))
+        volume = math.pi * pow(raio,2) * altura
+
+
+    elif Resposta6 == 4:
+        raio = int(input("Qual o  raio: "))
+        volume = math.pi * pow(raio,3) * (4/3)
+    
+    elif Resposta == 5:
+        raio = int(input("Qual o  raio: "))
+        altura = int(input("Qual a altura:"))
+        volume = (math.pi * pow(raio,2) * altura)/3
+
+elif Resposta == 10:
+    
+    tipo2 = int(input("Qual o tipo: 1-Trigonométrica 2-Algébrica"))
+    if tipo2 == 1:
+        grau = int(input("Qual o grau: "))
+        rad = math.radians(grau)     
+        tipo = int(input("Qual o tipo de funcao: 1-seno 2-cos 3-tg"))
+
+        if tipo == 1:
+            x = math.cos(rad)
+            print(x)
+        elif tipo == 2:
+            x = math.sin(rad)
+            x = x * (-1)
+            print(x)
+
+        elif tipo == 3:
+            x = math.cos(rad)
+            x = pow(x, 2)      
+            x = 1/x
+            print(x)
+    else:
+        expression = input("Enter the function: ")
+        variable = input("Enter the variable: ")
+            
+        x = sp.Symbol(variable)
+        f = sp.sympify(expression)
+        derivative = sp.diff(f, x)
+
+        print("The derivative of", expression, "with respect to", variable, "is:")
+        print(derivative)                  
+
+  
+
+elif Resposta == 11:
+    def func(x):
+        return x**2
+
+    # Calcule a integral definida da função entre os limites [0, 1]
+    result, _ = quad(func, 0, 1)
+    print("Resultado da integral:", result)
+
+    # Crie um gráfico da função
+    x_vals = np.linspace(0, 1, 100)
+    y_vals = func(x_vals)
+    plt.plot(x_vals, y_vals, label='x^2')
+    plt.fill_between(x_vals, y_vals, alpha=0.2)
+    plt.xlabel('x')
+    plt.ylabel('f(x)')
+    plt.legend()
+    plt.show()
+
+
+
+
+elif Resposta == 12:
+
+    grau = int(input("Qual o grau da funcao"))
+
+    if grau == 1:
+        a = int(input("Digite o coeficiente angular: "))
+        b = int(input("Qua termo independente: "))
+        precision1 = int(input("Qual a precisao: "))
+        precision2 = int(input("Qual a precisao: "))
+        precision3 = int(input("Qual a precisao: "))
+        x = np.linspace(precision2, precision3, precision1)
+        y = a * x**grau + b 
+        plt.plot(x, y, label=f'y = {a}x^1 + {b}')
+        plt.xlabel('x')
+        plt.ylabel('y')
+        plt.title('Function')
+        plt.legend()
+        plt.grid()
+        plt.show()
+
+
+    elif grau == 2:
+        a = int(input("Digite o coeficiente a: "))
+        b = int(input("Digite o coeficiente b: "))
+        c = int(input("Qua termo independente: "))
+
+        precision1 = int(input("Qual a precisao: "))
+        precision2 = int(input("Qual a precisao: "))
+        precision3 = int(input("Qual a precisao: "))
+
+        x = np.linspace(precision2, precision3, precision1)
+
+
+        y = a * x**grau + b * x + c
+
+
+        plt.plot(x, y, label=f'y = {a}x^2 + {b}x + {c}')
+        plt.xlabel('x')
+        plt.ylabel('y')
+        plt.title('Quadratic Function')
+        plt.legend()
+        plt.grid()
+        plt.show()
+
+    elif grau == 3:
+        a = int(input("Digite o coeficiente a: "))
+        b = int(input("Digite o coeficiente b: "))
+        c = int(input("Digite o coeficiente c: "))
+        d = int(input("Qua termo independente: "))
+
+        precision1 = int(input("Qual a precisao: "))
+        precision2 = int(input("Qual a precisao: "))
+        precision3 = int(input("Qual a precisao: "))
+
+        x = np.linspace(precision2, precision3, precision1)
+
+
+        y = a * x**grau + b * x**(grau-1)+ c**(grau-2) + d
+
+
+        plt.plot(x, y, label=f'y = {a}x^2 + {b}x^2 + {c}x^1 + {d}')
+        plt.xlabel('x')
+        plt.ylabel('y')
+        plt.title('Cubic Function')
+        plt.legend()
+        plt.grid()
+        plt.show()
+
+    
 
 
